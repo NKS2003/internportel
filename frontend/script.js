@@ -1,0 +1,9 @@
+// script.js
+
+fetch('http://localhost:3000/api/intern')
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('name').textContent = data.name;
+    document.getElementById('referral').textContent = data.referralCode;
+    document.getElementById('donation').textContent = data.totalDonations;
+  });

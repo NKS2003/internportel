@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leaderboard - Intern Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="centered">
+  <div class="card">
+    <h2>🏆 Top Interns</h2>
+    <ul id="leaderboard"></ul>
+    <a href="dashboard.html" class="btn">🔙 Back to Dashboard</a>
+  </div>
+
+  <script>
+    fetch('http://localhost:3000/api/leaderboard')
+      .then(res => res.json())
+      .then(data => {
+        const ul = document.getElementById("leaderboard");
+        data.forEach(user => {
+          const li = document.createElement("li");
+          li.textContent = `${user.name} – ₹${user.amount}`;
+          ul.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
